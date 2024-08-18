@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla Completa con GIF y Sonido</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        #gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #click-para-iniciar {
+            color: white;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="click-para-iniciar">The Best Cheats Market</div>
+    <img id="gif" src="mystery-7467_256.gif" alt="GIF en pantalla completa" style="display:none;">
+    <audio id="audio" src="Screamer de Jeff the Killer 2_N1lco5BX-RE.mp3" loop></audio>
+
+    <script>
+        // Función para activar el modo pantalla completa
+        function activarPantallaCompleta() {
+            let elem = document.documentElement;
+
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari y Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Función que se ejecuta al hacer clic para iniciar
+        function iniciarExperiencia() {
+            activarPantallaCompleta();
+            document.getElementById('gif').style.display = 'block'; // Mostrar GIF
+            document.getElementById('audio').play(); // Reproducir sonido
+            document.getElementById('click-para-iniciar').style.display = 'none'; // Ocultar texto de inicio
+        }
+
+        // Añadir evento para iniciar al hacer clic
+        document.getElementById('click-para-iniciar').addEventListener('click', iniciarExperiencia);
+    </script>
+</body>
+</html>
